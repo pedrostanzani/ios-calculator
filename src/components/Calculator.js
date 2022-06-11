@@ -1,9 +1,23 @@
 import React from 'react';
 
 class Calculator extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            display: '0'
+        };
+    }
+
     render() {
+        const digits = [...Array(10).keys()].map((i) => {
+            return (<button>{i}</button>);
+        });
+
         return (
-            <div>Calculator component.</div>
+            <div>
+                <div className='display'>{this.state.display}</div>
+                {digits}
+            </div>
         );
     }
 }
