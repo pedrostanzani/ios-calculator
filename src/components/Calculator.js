@@ -9,8 +9,16 @@ class Calculator extends React.Component {
     }
 
     handleInput(i) {
-        let display = this.state.display + i.toString();
+        let display = this.state.display;
 
+        // Prevent separator from being input more than once
+        if (i === '.' && display.indexOf('.') !== -1) {
+            return;
+        }
+
+        display += i.toString();
+        
+        // Remove leading zeroes if number displays no separator
         if (display.charAt(0) === '0' && display.indexOf('.') === -1) {
             display = display.replace('0', '');
         }
@@ -27,6 +35,7 @@ class Calculator extends React.Component {
             <div>
                 <div className='display'>{this.state.display}</div>
                 {digits}
+                <button onClick={() => this.handleInput('.')}>.</button>
             </div>
         );
     }
