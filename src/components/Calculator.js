@@ -8,6 +8,18 @@ class Calculator extends React.Component {
         };
     }
 
+    handleSignChange() {
+        let display = this.state.display;
+
+        if (display.charAt(0) === '-') {
+            display = display.replace('-', '');
+        } else {
+            display = '-' + display;
+        }
+
+        this.setState({ display });
+    }
+
     handleInput(i) {
         let display = this.state.display;
 
@@ -36,6 +48,7 @@ class Calculator extends React.Component {
                 <div className='display'>{this.state.display}</div>
                 {digits}
                 <button onClick={() => this.handleInput('.')}>.</button>
+                <button onClick={() => this.handleSignChange()}>+/-</button>
             </div>
         );
     }
