@@ -8,6 +8,31 @@ class Calculator extends React.Component {
         };
     }
 
+    setDisplay(dp) {
+        let display = '';
+        let digitCount = 0;
+
+        // Limit display length to 9 digits
+        for (let i = 0; i < dp.length; i++) {
+            const char = dp.charAt(i);
+            
+            if (char >= '0' && char <= 9) {
+                display += char;
+                digitCount++;
+            } else {
+                display += char;
+            }
+
+            if (digitCount > 8) {
+                i = dp.length;
+            }
+        }
+
+        // Implementation pending: include decimal separators
+        
+        this.setState({ display });
+    }
+
     handleSignChange() {
         let display = this.state.display;
 
@@ -17,7 +42,7 @@ class Calculator extends React.Component {
             display = '-' + display;
         }
 
-        this.setState({ display });
+        this.setDisplay(display);
     }
 
     handleInput(i) {
@@ -35,7 +60,7 @@ class Calculator extends React.Component {
             display = display.replace('0', '');
         }
 
-        this.setState({ display });
+        this.setDisplay(display);
     }
 
     render() {
