@@ -10,7 +10,7 @@ class Calculator extends React.Component {
 
     render() {
         const digits = [...Array(10).keys()].map((i) => {
-            return (<button>{i}</button>);
+            return (<button onClick={() => this.handleInput(i)} key={i}>{i}</button>);
         });
 
         return (
