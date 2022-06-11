@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { limitDigits, includeSeparators } from '../utils';
+
 class Calculator extends React.Component {
     constructor(props) {
         super(props);
@@ -8,28 +10,12 @@ class Calculator extends React.Component {
         };
     }
 
-    setDisplay(dp) {
-        let display = '';
-        let digitCount = 0;
+    setDisplay(display) {
+        // Strip decimal separators
+        display = display.replaceAll(',', '');
 
-        // Limit display length to 9 digits
-        for (let i = 0; i < dp.length; i++) {
-            const char = dp.charAt(i);
-            
-            if (char >= '0' && char <= 9) {
-                display += char;
-                digitCount++;
-            } else {
-                display += char;
-            }
-
-            if (digitCount > 8) {
-                i = dp.length;
-            }
-        }
-
-        // Implementation pending: include decimal separators
-        
+        display = limitDigits(display);
+        display = includeSeparators(display);
         this.setState({ display });
     }
 
