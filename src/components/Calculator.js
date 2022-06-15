@@ -127,6 +127,7 @@ class Calculator extends React.Component {
     handleClick(i) {
         this.setState({lastCommand: i});
         if ([...Array(10).keys(), '.'].includes(i)) {
+            console.log(i)
             this.handleInput(i);
         }
         if (['+', '-', 'x', '÷'].includes(i)) {
@@ -150,7 +151,7 @@ class Calculator extends React.Component {
 
                 <div>
                     {digits}
-                    <button>.</button>
+                    <button onClick={() => this.handleClick('.')}>.</button>
                 </div>
 
                 <div>
