@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# iOS Calculator clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a React.js clone of the iOS built-in Calculator app. Feel free to suggest improvements and make pull requests.
 
 ## Available Scripts
 
