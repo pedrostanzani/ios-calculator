@@ -1,0 +1,57 @@
+body {
+    background-color: black;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.btn {
+    color: white;
+    background-color: rgb(51, 51, 51);
+    font-size: 24px;
+    border: none;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    padding: 0;
+
+    margin: 4px;
+}
+
+.btn:active {
+    background-color: rgb(115, 115, 115);
+}
+
+.fn-btn {
+    color: black;
+    background-color: rgb(165, 165, 165);
+}
+
+.fn-btn:active {
+    background-color: rgb(217, 217, 217);
+}
+
+.op-btn {
+    background-color: rgb(242, 163, 60);
+}
+
+.op-btn:active {
+    color: rgb(242, 163, 60);
+    background-color: white;
+}
+
+.btn-large {
+    border-radius: 38px;
+    width: 148px;
+}
+
+.display {
+    color: white;
+    text-align: right;
+    padding-right: 10px;
+    font-size: 75px;
+    font-weight: 100;
+}
+
+.wrapper {
+    display:inline-block;
+    margin-top: 30px;
+}

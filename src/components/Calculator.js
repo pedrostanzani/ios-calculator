@@ -140,32 +140,86 @@ class Calculator extends React.Component {
         }
     }
 
-    render() {
-        const digits = [...Array(10).keys()].map((i) => {
-            return (<button key={i} onClick={() => this.handleClick(i)}>{i}</button>);
+    handleSignChange() {
+        let display = this.state.display;
+
+        if (typeof display === 'number') {
+            display = display.toString();
+        }
+
+        if (display.charAt(0) === '-') {
+            display = display.replace('-', '');
+        } else {
+            display = '-' + display;
+        }
+
+        this.setDisplay(display);
+    }
+
+    handleClear() {
+        this.setState({
+            firstOperand: 0,
+            secondOperand: 0,
+            operator: null,
+
+            display: '0',
+            lock: true,
+
+            lastCommand: null,
+            lastOperation: null,
         });
+    }
+
+    handlePerCent() {
+        let display = this.state.display;
+
+        if (typeof display === 'string') {
+            display = Number(display);
+        }
+
+        display = display / 100;
+
+        this.setDisplay(display);
+    }
+
+    render() {
 
         return (
-            <div>
+            <div className='wrapper'>
                 <div className='display'>{this.state.display}</div>
 
-                <div>
-                    {digits}
-                    <button onClick={() => this.handleClick('.')}>.</button>
+                <div className='top-row'>
+                    <button className='btn fn-btn' onClick={() => this.handleClear()}>AC</button>
+                    <button className='btn fn-btn' onClick={() => this.handleSignChange()}>+/-</button>
+                    <button className='btn fn-btn' onClick={() => this.handlePerCent()}>%</button>
+                    <button className='btn op-btn' onClick={() => this.handleClick('÷')}>÷</button>
                 </div>
 
                 <div>
-                    <button>AC</button>
-                    <button>+/-</button>
-                    <button>%</button>
+                    <button className='btn' onClick={() => this.handleClick(7)}>7</button>
+                    <button className='btn' onClick={() => this.handleClick(8)}>8</button>
+                    <button className='btn' onClick={() => this.handleClick(9)}>9</button>
+                    <button className='btn op-btn' onClick={() => this.handleClick('x')}>x</button>
                 </div>
 
                 <div>
-                    <button onClick={() => this.handleClick('÷')}>÷</button>
-                    <button onClick={() => this.handleClick('x')}>x</button>
-                    <button onClick={() => this.handleClick('+')}>+</button>
-                    <button onClick={() => this.handleClick('-')}>-</button>
-                    <button onClick={() => this.handleClick('=')}>=</button>
+                    <button className='btn' onClick={() => this.handleClick(4)}>4</button>
+                    <button className='btn' onClick={() => this.handleClick(5)}>5</button>
+                    <button className='btn' onClick={() => this.handleClick(6)}>6</button>
+                    <button className='btn op-btn' onClick={() => this.handleClick('-')}>-</button>
+                </div>
+                
+                <div>
+                    <button className='btn' onClick={() => this.handleClick(1)}>1</button>
+                    <button className='btn' onClick={() => this.handleClick(2)}>2</button>
+                    <button className='btn' onClick={() => this.handleClick(3)}>3</button>
+                    <button className='btn op-btn' onClick={() => this.handleClick('+')}>+</button>
+                </div>
+                
+                <div>
+                    <button className='btn btn-large' onClick={() => this.handleClick(0)}>0</button>
+                    <button className='btn' onClick={() => this.handleClick('.')}>.</button>
+                    <button className='btn op-btn' onClick={() => this.handleClick('=')}>=</button>
                 </div>
 
             </div>
