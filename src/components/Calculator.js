@@ -95,8 +95,6 @@ class Calculator extends React.Component {
 
         this.setDisplay(result);
 
-
-
         // When would it be NaN?
         // if (!isNaN(result)) {
         //     this.setState({firstOperand: result});
@@ -131,7 +129,7 @@ class Calculator extends React.Component {
         if ([...Array(10).keys(), '.'].includes(i)) {
             this.handleInput(i);
         }
-        if (['+', '-', 'x', '+'].includes(i)) {
+        if (['+', '-', 'x', '÷'].includes(i)) {
             this.setState({lock: true, lastOperation: i});
             this.selectOperation(i);
         }
